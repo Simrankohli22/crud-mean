@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactService } from './contact.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     FormsModule,
+    AppRoutingModule,
     HttpClientModule
   ],
   providers: [ContactService,HttpClientModule],

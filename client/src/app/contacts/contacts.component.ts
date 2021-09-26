@@ -9,7 +9,7 @@ import {Contact} from '../contact';
   providers:[ContactService]
 })
 export class ContactsComponent implements OnInit {
-  contacts:Contact[];
+  contacts:any;
   contact:Contact;
   Name:string;
   Position:string;
@@ -40,16 +40,17 @@ export class ContactsComponent implements OnInit {
     var contacts=this.contacts;
     this.contactService.deleteContact(id)
     .subscribe(data=>{
-      if(data.n==1)
-      {
-        for(var i=0;i<contacts.length;i++)
-        {
-          if(contacts[i]._id ==id)
-          {
-            contacts.splice(i,1);
-          }
-        }
-      }
+      // if(data.n==1)
+      // {
+      //   for(var i=0;i<contacts.length;i++)
+      //   {
+      //     if(contacts[i]._id ==id)
+      //     {
+      //       contacts.splice(i,1);
+      //     }
+      //   }
+      // }
+      console.log(data)
     })
   }
 
