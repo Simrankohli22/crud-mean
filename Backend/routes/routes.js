@@ -15,7 +15,20 @@ router.get('/', (req, res) => {
         }
     });
 });
-// //creating data 
+
+// get contact by id
+router.get('/:id', (req, res) => {
+    Employee.findById({_id: req.params.id},function (err, doc) {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json(doc);
+        }
+    });
+});
+
+//creating data 
 router.post('/', (req, res) => {
     let emp = new Employee({
         Name: req.body.Name,
@@ -24,13 +37,14 @@ router.post('/', (req, res) => {
         Email : req.body.Email,
         Salary: req.body.Salary
     });
-
-    emp.save((err, doc) => {
+    // console.log("red data**********",req);
+    emp.save((err, data) => {
         if (err) {
             res.json(err);
         }
         else {
-            res.json('Item has been added successfully');
+            console.log("respnse***************",data)
+            res.json({message:'Item has been added successfully',data:data});
         }
     });
 });
@@ -57,6 +71,7 @@ router.put('/:id', (req, res) => {
 });
 // // //deleting the data
 router.delete('/:id',(req,res)=>{
+    console.log("req.params.id",req.params.id)
     Employee.remove({_id: req.params.id},function(err,result){
         if(err){
             res.json(err);
